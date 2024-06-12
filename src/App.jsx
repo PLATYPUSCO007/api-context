@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css';
 import { AppRouter } from "./routing/AppRouter";
 import { Context } from "./context/Context";
@@ -12,6 +12,21 @@ function App() {
   });
 
   const [login, setLogin] = useState(false);
+
+  useEffect(()=>{
+    if (localStorage.getItem('sesionUser')) {
+      setLogin(true);
+      setUser(JSON.parse(localStorage.getItem('sesionUser')));
+    }
+  }, 
+  [])
+
+  useEffect(()=>{
+    (login) 
+    ? localStorage.setItem('sesionUser', JSON.stringify(user)) 
+    : localStorage.clear();
+  }, 
+  [user]);
 
   return (
     <div className='container'>

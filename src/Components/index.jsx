@@ -4,6 +4,7 @@ import { Contact } from "./Contact";
 import { Home } from "./Home";
 import { Login } from "./Login";
 import { ErrorPage } from "./ErrorPage";
+import {DetailArticle} from './DetailArticle';
 
 export const rutas = {
     About,
@@ -11,5 +12,6 @@ export const rutas = {
     Contact,
     Home,
     Login,
-    ErrorPage
+    ErrorPage,
+    DetailArticle,
 }

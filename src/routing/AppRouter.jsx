@@ -4,10 +4,15 @@ import { rutas } from "../Components";
 import { Context } from '../context/Context';
 
 export const AppRouter = () => {
-  const {user, login, setLogin} = useContext(Context);
+  const {user, login, setLogin, setUser} = useContext(Context);
 
   const handleLogout = ()=>{
     setLogin(false);
+    setUser({
+      username: '',
+      name: '',
+      phone: ''
+    });
   }
 
   return (
@@ -15,7 +20,7 @@ export const AppRouter = () => {
       <header className='header-nav'>
         <nav>
           <div className='logo'>
-            <h1>Menu</h1>
+            <img src="/LOGOSTORE.png" alt="logo" width="90px" height="90px"/>
           </div>
           <ul>
             <li>
@@ -53,6 +58,7 @@ export const AppRouter = () => {
             <Route path='/' element={<rutas.Home/>}></Route>
             <Route path='/login' element={<rutas.Login/>}></Route>
             <Route path='/articulos' element={<rutas.Article/>}></Route>
+            <Route path='/detail/:id' element={<rutas.DetailArticle/>}></Route>
             <Route path='/contacto' element={<rutas.Contact/>}></Route>
             <Route path='/sobre_mi' element={<rutas.About/>}></Route>
             <Route path='/*' element={<rutas.ErrorPage/>}></Route>
